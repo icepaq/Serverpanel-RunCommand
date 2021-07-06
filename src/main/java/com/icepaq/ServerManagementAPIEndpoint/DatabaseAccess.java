@@ -178,6 +178,10 @@ public class DatabaseAccess {
 				+ "date DATETIME, "
 				+ "command TEXT, "
 				+ "command_id VARCHAR(255))";
+		queries[3] = "CREATE TABLE IF NOT EXISTS servermanager.processes("
+				+ "process_id VARCHAR(100), "
+				+ "date DATETIME, "
+				+ "active BOOLEAN);";
 		PreparedStatement stmt = null;
 		
 		String return_statement = "success";
