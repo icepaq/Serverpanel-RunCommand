@@ -79,10 +79,9 @@ public class RESTController {
 	public RunCommand getCPU(@RequestParam(value = "api_key", defaultValue = "null") String api_key) throws SQLException, NoSuchAlgorithmException {
 		
 		ArrayList<String> command = new ArrayList<>();
-		command.add("top");
-		command.add("-b");
-		command.add("-n 1");
-		
+		command.add("bash");
+		command.add("-c");
+		command.add("top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100 - $1\"%\"}'");		
 		RunCommand rc = new RunCommand(api_key, command);
 		rt = rc.thread();
 		return rc;
