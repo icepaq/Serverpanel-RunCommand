@@ -52,22 +52,13 @@ public class RESTController {
 	
 	//The command is recognized as an Array List to make the process simple in the first line of RunCommandThread.run()
 	@CrossOrigin
-	@GetMapping("/runcommand")
-	public RunCommand echo(@RequestParam(value = "api_key", defaultValue = "null") String api_key, @RequestParam(value = "commands") ArrayList<String> commands) throws SQLException, NoSuchAlgorithmException {
-		
-		RunCommand rc = new RunCommand(api_key, commands);
-		rt = rc.thread();
-		return rc;
-	}
-	
-	//The command is recognized as an Array List to make the process simple in the first line of RunCommandThread.run()
-	@CrossOrigin
 	@GetMapping("/getRAM")
 	public RunCommand getRAM(@RequestParam(value = "api_key", defaultValue = "null") String api_key) throws SQLException, NoSuchAlgorithmException {
 		
 		ArrayList<String> command = new ArrayList<>();
-		command.add("echo");
-		command.add("getRAM");
+		command.add("bash");
+		command.add("-c");
+		command.add("cat /proc/meminfo");
 		
 		RunCommand rc = new RunCommand(api_key, command);
 		rt = rc.thread();
