@@ -58,7 +58,7 @@ public class RESTController {
 		ArrayList<String> command = new ArrayList<>();
 		command.add("bash");
 		command.add("-c");
-		command.add("cat /proc/meminfo");
+		command.add("free");
 		
 		RunCommand rc = new RunCommand(api_key, command);
 		rt = rc.thread();
