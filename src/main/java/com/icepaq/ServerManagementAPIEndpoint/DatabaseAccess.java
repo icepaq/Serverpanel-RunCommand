@@ -170,6 +170,7 @@ public class DatabaseAccess {
 	public String setup(String api_key) throws SQLException, NoSuchAlgorithmException {
 		
 		Connection conn = DriverManager.getConnection(codes.host_name, codes.db_username, codes.db_password);
+		System.out.println(codes.db_password);
 		String[] queries = new String[4];
 		queries[0] = "CREATE DATABASE IF NOT EXISTS servermanager";
 		queries[1] = "CREATE TABLE IF NOT EXISTS servermanager.api_tokens(token VARCHAR(255))";
